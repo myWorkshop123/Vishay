@@ -1,11 +1,10 @@
 import React from "react";
-import { PeriodType } from "./periodType";
+import PeriodType from "../components/periodType";
 
-function Subject({ subinfo, changeQuota,quota }) {
+function Subject({ subinfo, changeQuota, quota }) {
   return (
     <div>
       <div>
-        
         <div>
           {/* Subject Name  */}
           <p className="text-2xl">Subject: {subinfo.name}</p>
@@ -24,7 +23,6 @@ function Subject({ subinfo, changeQuota,quota }) {
                 key={Math.random() + 3}
                 changeQuota={changeQuota}
                 quota={quota}
-                
               />
             );
           })}
