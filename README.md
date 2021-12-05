@@ -32,3 +32,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+# Project Idea 
+
+In a college there is a hierarchy of professors where each of them have a ranking / priority 
+So if someone is a dean he will have the highest priority p0 , or something , then hods ,then 
+teaches who are adhoc then all these teachers will have payload 
+
+All those teachers have a subject quota / payload which they have to fill 
+
+there are subjects , each subject has three things , lab, theory , practical. all of these will sum 
+up to something called credits / total credits 
