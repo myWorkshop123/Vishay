@@ -1,7 +1,7 @@
 import React from "react";
 import PeriodType from "../components/periodType";
 
-function Subject({ subinfo, changeQuota, quota }) {
+function Subject({ subinfo, updateQuotaWithToggle }) {
   return (
     <div>
       <div>
@@ -16,13 +16,12 @@ function Subject({ subinfo, changeQuota, quota }) {
       </div>
       <div className="flex">
         {subinfo.subField &&
-          subinfo.subField.map((element) => {
+          subinfo.subField.map((element,index) => {
             return (
               <PeriodType
                 subfieldInfo={element}
-                key={Math.random() + 3}
-                changeQuota={changeQuota}
-                quota={quota}
+                key={index}
+                updateQuotaWithToggle={updateQuotaWithToggle}
               />
             );
           })}

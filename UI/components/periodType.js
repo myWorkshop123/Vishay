@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-export default function PeriodType({ subfieldInfo, changeQuota, quota }) {
+export default function PeriodType({ subfieldInfo,updateQuotaWithToggle }) {
   return (
     subfieldInfo && (
       <div className="p-6 card bordered bg-neutral w-1/5 ">
@@ -16,8 +16,9 @@ export default function PeriodType({ subfieldInfo, changeQuota, quota }) {
             </span>
             <input
               className="toggle toggle-secondary"
+              onChange={updateQuotaWithToggle}
               type="checkbox"
-              defaultValue={subfieldInfo.score}
+              value={subfieldInfo.score}
             />
           </label>
         </div>
