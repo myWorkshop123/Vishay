@@ -56,6 +56,6 @@ const SUBJECTLIST = [
 ];
 
 const QUOTA = 30
-const MULTIPLIER = 3
+const MULTIPLIER = 2
 
 export {SUBJECTLIST , QUOTA , MULTIPLIER}

@@ -6,7 +6,7 @@ import Subject from "../components/subject";
 import { SUBJECTLIST, QUOTA, MULTIPLIER } from "../components/constants";
 
 export default function Home() {
-  const [quota, changeQuota] = useState(30);
+  const [quota, changeQuota] = useState(QUOTA);
   const [total, setTotal] = useState(0);
   const [quotaLimitMessage, setQuotaLimitMessage] = useState();
   const subjects = SUBJECTLIST;
@@ -23,18 +23,19 @@ export default function Home() {
     setTotal(total);
   };
   const updateQuotaWithToggle = (event) => {
-    const periodValue = parseInt(event.target.value);
+    const periodValue = parseInt(event.target.value) * MULTIPLIER;
     if (quota >= 0) {
       if (event.target.checked) {
-        if ((quota - periodValue) < 0) {
+        if (quota - periodValue < 0) {
           setQuotaLimitMessage(
             "Quota Limit exhausted can't select this period type"
           );
+          event.target.checked = false;
         } else {
           changeQuota(quota - periodValue);
         }
-      }else{
-        changeQuota(quota+periodValue);
+      } else {
+        changeQuota(quota + periodValue);
       }
     }
   };
@@ -43,6 +44,7 @@ export default function Home() {
       <Head />
       <h1 className="text-center text-6xl">Select the subjects</h1>
       <p className="text-right text-5xl"> Quota: {quota}</p>
+      <p className="text-right text-5xl"> Mutiplier: {MULTIPLIER}</p>
       <p className="text-right text-5xl"> Total: {total}</p>
       <p className="text-right text-5xl">{quotaLimitMessage}</p>
       <form onSubmit={handleChange}>
