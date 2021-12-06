@@ -17,7 +17,7 @@ export default function Home() {
     let total = 0;
     for (let i = 0; i < event.target.length; i++) {
       if (event.target[i].checked) {
-        total += parseInt(event.target[i].value);
+        total += parseInt(event.target[i].value) * MULTIPLIER;
       }
     }
     setTotal(total);
