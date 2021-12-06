@@ -30,6 +30,8 @@ export default function Home() {
           setQuotaLimitMessage(
             "Quota Limit exhausted can't select this period type"
           );
+          setTimeout(()=>setQuotaLimitMessage("") , 3000);
+          
           event.target.checked = false;
         } else {
           changeQuota(quota - periodValue);
