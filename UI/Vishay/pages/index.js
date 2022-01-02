@@ -4,16 +4,15 @@ import styles from "../styles/Home.module.css";
 import { createContext, useState } from "react";
 import Subject from "../components/subject";
 import { SUBJECTLIST, QUOTA, MULTIPLIER } from "../components/constants";
-
+import Link from "next/link";
 export default function Home() {
   const [quota, changeQuota] = useState(QUOTA);
   const [total, setTotal] = useState(0);
   const [quotaLimitMessage, setQuotaLimitMessage] = useState();
   const subjects = SUBJECTLIST;
-  const handleChange = (event) => {
+  // what i want it to do is that it should show the thank you page
+  const addSelectedCheckboxValue = (event) => {
     event.preventDefault();
-    console.log(event.target[0].checked);
-    console.log(event.target.length);
     let total = 0;
     for (let i = 0; i < event.target.length; i++) {
       if (event.target[i].checked) {
@@ -49,7 +48,7 @@ export default function Home() {
       <p className="text-right text-5xl"> Mutiplier: {MULTIPLIER}</p>
       <p className="text-right text-5xl"> Total: {total}</p>
       <p className="text-right text-5xl">{quotaLimitMessage}</p>
-      <form onSubmit={handleChange}>
+      <form onSubmit={addSelectedCheckboxValue} method="POST">
         {subjects.map((sub, index) => {
           return (
             <div key={index}>
@@ -64,7 +63,9 @@ export default function Home() {
           );
         })}
         <div className="text-center">
-          <input type="submit" className="btn btn-outline btn-secondary" />
+          <button className="btn btn-outline btn-secondary" type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </div>
