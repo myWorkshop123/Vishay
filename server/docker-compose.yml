@@ -1,0 +1,44 @@
+version: "3"
+services:
+    app:
+        build: ./app/
+        hostname: app
+        env_file:
+            - .env
+        volumes:
+            - ./app:/application/
+            - app-usr-local-bin:/usr/local/bin
+            - app-python-site-packages:/usr/local/lib/python3.7/site-packages
+        ports:
+            - "8889:8000"
+        # command: bash -c "python backend/manage.py runserver 0.0.0.0:8000"
+        # command: gunicorn backend.django_project.wsgi:application -b 0.0.0.0:8000 --log-file=-
+        command: tail -f /dev/null
+
+        depends_on:
+            postgres:
+                condition: service_healthy
+    postgres:
+        image: postgres:12.2-alpine
+        env_file:
+            - .env
+        ports:
+            - 9491:5432
+        volumes:
+            - .:/shared
+            - db-data:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD", "pg_isready", "-U", "postgres"]
+            interval: 5s
+            retries: 5
+        restart: always
+
+volumes:
+    app-python-site-packages:
+        driver: local
+    app-usr-local-bin:
+        driver: local
+    db-data:
+        driver: local
+    logs-volume:
+        driver: local

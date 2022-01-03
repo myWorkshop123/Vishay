@@ -1,0 +1,16 @@
+# DEV
+ipython
+watchdog
+argh # for watchdog
+pyyaml # for watchdog
+
+# Django Rest Framework 
+django
+djangorestframework
+django-jsonfield
+django-cors-headers
+django-crispy-forms
+gunicorn
+django-environ
+djangorestframework-simplejwt
+psycopg2
